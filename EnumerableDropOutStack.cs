@@ -53,6 +53,9 @@ namespace EnumerableDropOutStack
         /// <returns>T.</returns>
         public T Pop()
         {
+            if (Count() <= 0)
+                return default(T);
+			
             _count -= 1;
             _count = _count < 0 ? 0 : _count;
 
@@ -66,6 +69,9 @@ namespace EnumerableDropOutStack
         /// <returns>T.</returns>
         public T Peek()
         {
+            if (Count() <= 0)
+                return default(T);
+			
             return _items[(_items.Length + _top - 1) % _items.Length]; //Same as pop but without changing the value of top.
         }
 
